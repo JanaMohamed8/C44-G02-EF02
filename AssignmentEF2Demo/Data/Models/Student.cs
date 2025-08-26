@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Identity.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AssignmentEF2Demo.Data.Models
 {
-    internal class Student
+    public class Student
     {
         public int Id { get; set; }
         [Required]
@@ -23,7 +24,15 @@ namespace AssignmentEF2Demo.Data.Models
         [Range(18,60)] 
         public int Age { get; set; }
         [Required]
+
+        #region One To Many [department have many students]
+        [ForeignKey(nameof(Department))]
         public int Dep_Id { get; set; }
+        public Department Department { get; set; } = null!;
+        #endregion
+        #region Many To Many [Students have Many Courses]
+        public ICollection<Stud_Course> StudentCourses { get; set; } = new HashSet<Stud_Course>();
+        #endregion
 
     }
 }

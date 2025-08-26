@@ -24,5 +24,6 @@ namespace AssignmentEF2Demo.Data.Models
         DbSet<Course> Courses { get; set; }
         DbSet<Instructor> Instructors { get; set; } 
         DbSet<Topic> Topics { get; set; }
+        DbSet<Course_Inst> course_Inst { get; set; }
     }
 }

@@ -16,6 +16,14 @@ namespace AssignmentEF2Demo.Data.configurations
             builder.HasCheckConstraint("SalaryIsNot0OrLess", "Salary > 0");
             builder.HasCheckConstraint("HourRateBounsIs0OrMore", "HourRateBouns >= 0");
             builder.Property(I => I.HourRateBouns).HasDefaultValue(0);
-        }
+
+            #region One To Many [department have many instructor]
+            builder.HasOne(I => I.Department)
+             .WithMany(d => d.Instructors)
+             .HasForeignKey(d => d.Dep_Id)
+             .OnDelete(DeleteBehavior.Cascade);
+    
+              #endregion
     }
+}
 }

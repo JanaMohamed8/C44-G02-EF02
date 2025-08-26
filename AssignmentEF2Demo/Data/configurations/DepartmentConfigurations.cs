@@ -17,6 +17,13 @@ namespace AssignmentEF2Demo.Data.configurations
                 .HasDefaultValueSql("GETDATE()");
             builder.HasIndex(d => d.Name)
               .IsUnique();
-        }
+
+            #region One To One [instructor Manage Department]
+            builder.HasOne(d => d.Manager)
+               .WithOne(i => i.ManageDepartment)
+               .HasForeignKey<Department>(d => d.ManagerId)
+               .OnDelete(DeleteBehavior.NoAction);
+             #endregion
     }
+}
 }

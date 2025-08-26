@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AssignmentEF2Demo.Data.Models
 {
-    internal class Department
+    public class Department
     {
         public int Id { get; set; }
         [Required]
@@ -18,5 +19,19 @@ namespace AssignmentEF2Demo.Data.Models
         [Required]
         
         public DateTime HiringDate { get; set; }
+
+        #region One To Many [department have many students]
+     
+        public ICollection<Student> Students { get; set; } = new HashSet<Student>();
+        #endregion
+        #region One To Many [department have many instructor]
+
+        public ICollection<Instructor> Instructors { get; set; } = new HashSet<Instructor>();
+        #endregion
+        #region One To One [instructor Manage Department]
+     
+        public int ManagerId { get; set; }
+        public Instructor Manager { get; set; } = null!;
+        #endregion
     }
 }

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AssignmentEF2Demo.Data.Models
 {
-    internal class Course
+    public class Course
     {
         public int Id { get; set; }
         [Required]
@@ -18,6 +19,17 @@ namespace AssignmentEF2Demo.Data.Models
         [Required]
         public int Duration { get; set; }
         [Required]
+
+        #region One To Many[topic have many courses]
+        [ForeignKey(nameof(Topic))]
         public int Top_ID { get; set; }
+        public Topic Topic { get; set; } = null!;
+        #endregion
+        #region Many To Many [instructors have many courses]
+        public ICollection<Course_Inst> Course_Inst { get; set; } = new HashSet<Course_Inst>();
+        #endregion
+        #region Many To Many [Students have Many Courses]
+        public ICollection<Stud_Course> StudentCourses { get; set; } = new HashSet<Stud_Course>();
+        #endregion
     }
 }

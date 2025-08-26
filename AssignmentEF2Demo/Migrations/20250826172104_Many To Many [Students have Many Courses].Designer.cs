@@ -4,6 +4,7 @@ using AssignmentEF2Demo.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AssignmentEF2Demo.Migrations
 {
     [DbContext(typeof(ITIDbcontext))]
-    partial class ITIDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20250826172104_Many To Many [Students have Many Courses]")]
+    partial class ManyToManyStudentshaveManyCourses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AssignmentEF2Demo.Data.Models
 {
-    internal class Instructor
+    public class Instructor
     {
         public int Id { get; set; }
         [Required]
@@ -23,5 +23,17 @@ namespace AssignmentEF2Demo.Data.Models
         public decimal HourRateBouns { get; set; }
         [Required]
         public int Dept_ID { get;set; }
+
+        #region Many To Many [instructors have many courses]
+        public ICollection<Course_Inst> Course_Inst { get; set; } = new HashSet<Course_Inst>();
+        #endregion
+        #region One To Many [department have many instructor]
+        public int Dep_Id { get; set; }
+        public Department Department { get; set; } = null!;
+        #endregion
+        #region One To One [instructor Manage Department]
+      
+        public Department? ManageDepartment { get; set; } 
+        #endregion
     }
 }
