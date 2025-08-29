@@ -255,12 +255,12 @@ namespace AssignmentEF2Demo
             //Console.WriteLine(CourseRead?.Name?? "Not Found");//OOP
             #endregion
             #region Delete
-            var CourseDelete = (from c in dbContext.Courses
-                                where c.Name == "OOP"
-                                select c).FirstOrDefault();
-            dbContext.Courses.Remove(CourseDelete);
-            Console.WriteLine(dbContext.Entry(CourseDelete).State);//Deleted
-            dbContext.SaveChanges();
+            //var CourseDelete = (from c in dbContext.Courses
+            //                    where c.Name == "OOP"
+            //                    select c).FirstOrDefault();
+            //dbContext.Courses.Remove(CourseDelete);
+            //Console.WriteLine(dbContext.Entry(CourseDelete).State);//Deleted
+            //dbContext.SaveChanges();
             #endregion
             #endregion
             #endregion
