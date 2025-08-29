@@ -30,7 +30,7 @@ namespace AssignmentEF2Demo.Data.Models
         #endregion
         #region One To One [instructor Manage Department]
      
-        public int ManagerId { get; set; }
+        public int? ManagerId { get; set; }
         public Instructor Manager { get; set; } = null!;
         #endregion
     }
